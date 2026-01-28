@@ -30,7 +30,7 @@ const ClauseCard: React.FC<ClauseCardProps> = ({
           emoji: '🔴',
           borderClass: 'clause-card-danger',
           badgeClass: 'risk-badge-danger',
-          textClass: 'text-risk-danger'
+          textClass: 'text-red-700'
         };
       case 'MEDIUM':
         return {
@@ -39,7 +39,7 @@ const ClauseCard: React.FC<ClauseCardProps> = ({
           emoji: '🟡',
           borderClass: 'clause-card-caution',
           badgeClass: 'risk-badge-caution',
-          textClass: 'text-risk-caution'
+          textClass: 'text-yellow-700'
         };
       default:
         return {
@@ -48,7 +48,7 @@ const ClauseCard: React.FC<ClauseCardProps> = ({
           emoji: '🟢',
           borderClass: 'clause-card-safe',
           badgeClass: 'risk-badge-safe',
-          textClass: 'text-risk-safe'
+          textClass: 'text-green-700'
         };
     }
   };
@@ -58,7 +58,7 @@ const ClauseCard: React.FC<ClauseCardProps> = ({
 
   return (
     <div 
-      className={`glass-card-hover ${riskConfig.borderClass} animate-slide-up`}
+      className={`legal-card-hover ${riskConfig.borderClass} animate-slide-up`}
       style={{ animationDelay: `${index * 0.1}s` }}
     >
       {/* Header */}
@@ -95,7 +95,7 @@ const ClauseCard: React.FC<ClauseCardProps> = ({
       }`}>
         <div className="pt-4 border-t border-border space-y-4">
           {/* Full Clause */}
-          <div className="p-4 rounded-lg bg-muted/30 border border-border/50">
+          <div className="p-4 rounded-lg bg-muted/50">
             <p className="text-sm text-foreground leading-relaxed italic">
               "{clause}"
             </p>
@@ -103,7 +103,7 @@ const ClauseCard: React.FC<ClauseCardProps> = ({
 
           {/* Law Cited */}
           <div className="flex items-start gap-3">
-            <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
+            <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
               <Scale className="w-4 h-4 text-primary" />
             </div>
             <div>
@@ -118,7 +118,7 @@ const ClauseCard: React.FC<ClauseCardProps> = ({
 
           {/* ELI5 Explanation */}
           <div className="flex items-start gap-3">
-            <div className="w-8 h-8 rounded-lg bg-accent/20 flex items-center justify-center flex-shrink-0">
+            <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
               <BookOpen className="w-4 h-4 text-accent" />
             </div>
             <div>

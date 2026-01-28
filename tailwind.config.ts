@@ -72,11 +72,6 @@ export default {
           medium: "hsl(var(--confidence-medium))",
           low: "hsl(var(--confidence-low))",
         },
-        glow: {
-          primary: "hsl(var(--glow-primary))",
-          secondary: "hsl(var(--glow-secondary))",
-          accent: "hsl(var(--glow-accent))",
-        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -94,27 +89,22 @@ export default {
         },
         "float": {
           "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-15px)" },
+          "50%": { transform: "translateY(-10px)" },
         },
         "shimmer": {
           "0%": { backgroundPosition: "-200% 0" },
           "100%": { backgroundPosition: "200% 0" },
         },
-        "glow-pulse": {
-          "0%, 100%": { opacity: "0.5" },
-          "50%": { opacity: "1" },
-        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "float": "float 4s ease-in-out infinite",
+        "float": "float 3s ease-in-out infinite",
         "shimmer": "shimmer 2s linear infinite",
-        "glow-pulse": "glow-pulse 3s ease-in-out infinite",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "shimmer": "linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)",
+        "shimmer": "linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)",
       },
     },
   },

@@ -28,7 +28,7 @@ const UploadBox: React.FC<UploadBoxProps> = ({
       setError('Please upload a PDF or DOCX file');
       return false;
     }
-    if (file.size > 10 * 1024 * 1024) {
+    if (file.size > 10 * 1024 * 1024) { // 10MB limit
       setError('File size must be less than 10MB');
       return false;
     }
@@ -75,6 +75,7 @@ const UploadBox: React.FC<UploadBoxProps> = ({
     setError(null);
 
     try {
+      // Use mock API for demo - replace with analyzeContract for production
       const result = await analyzeContractMock(selectedFile);
       onAnalysisComplete(result);
     } catch (err) {
@@ -99,9 +100,9 @@ const UploadBox: React.FC<UploadBoxProps> = ({
   };
 
   return (
-    <div className="glass-card animate-fade-in">
+    <div className="legal-card animate-fade-in">
       <div className="flex items-center gap-3 mb-6">
-        <div className="w-10 h-10 rounded-lg gradient-accent flex items-center justify-center glow-purple">
+        <div className="w-10 h-10 rounded-lg gradient-accent flex items-center justify-center">
           <CloudUpload className="w-5 h-5 text-accent-foreground" />
         </div>
         <div>
@@ -135,11 +136,11 @@ const UploadBox: React.FC<UploadBoxProps> = ({
           <div className="flex flex-col items-center justify-center py-8 text-center">
             <div className={`w-16 h-16 rounded-full flex items-center justify-center mb-4 transition-all duration-300 ${
               isDragActive 
-                ? 'bg-primary/30 scale-110 glow-purple' 
+                ? 'bg-accent/20 scale-110' 
                 : 'bg-muted'
             }`}>
               <Upload className={`w-8 h-8 transition-colors duration-300 ${
-                isDragActive ? 'text-primary' : 'text-muted-foreground'
+                isDragActive ? 'text-accent' : 'text-muted-foreground'
               }`} />
             </div>
             <p className="font-medium text-foreground mb-1">
@@ -181,7 +182,7 @@ const UploadBox: React.FC<UploadBoxProps> = ({
       </div>
 
       {error && (
-        <div className="mt-4 p-3 rounded-lg bg-destructive/20 border border-destructive/30 text-destructive text-sm">
+        <div className="mt-4 p-3 rounded-lg bg-destructive/10 border border-destructive/20 text-destructive text-sm">
           {error}
         </div>
       )}
@@ -190,7 +191,7 @@ const UploadBox: React.FC<UploadBoxProps> = ({
         <button
           onClick={handleUpload}
           disabled={isLoading}
-          className="mt-6 w-full py-3 px-6 btn-glow text-primary-foreground flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="mt-6 w-full py-3 px-6 rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-2 gradient-accent text-accent-foreground hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed glow-accent"
         >
           {isLoading ? (
             <>

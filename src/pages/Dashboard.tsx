@@ -25,25 +25,20 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-3d relative overflow-hidden">
-      {/* 3D Floating Orbs */}
-      <div className="orb orb-1" />
-      <div className="orb orb-2" />
-      <div className="orb orb-3" />
-
+    <div className="min-h-screen bg-background">
       {/* Hero Header */}
-      <header className="gradient-hero relative z-10">
-        <div className="container mx-auto px-4 py-8 md:py-12 relative">
+      <header className="gradient-hero text-primary-foreground">
+        <div className="container mx-auto px-4 py-8 md:py-12">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 rounded-2xl glass-card flex items-center justify-center glow-purple">
-                <Shield className="w-8 h-8 text-primary" />
+              <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20">
+                <Shield className="w-8 h-8 text-white" />
               </div>
               <div>
-                <h1 className="font-display text-2xl md:text-3xl font-bold tracking-tight text-gradient">
+                <h1 className="font-display text-2xl md:text-3xl font-bold tracking-tight">
                   AI Legal Sentinel
                 </h1>
-                <p className="text-muted-foreground text-sm md:text-base flex items-center gap-2">
+                <p className="text-white/80 text-sm md:text-base flex items-center gap-2">
                   <Scale className="w-4 h-4" />
                   Contract Intelligence for India
                 </p>
@@ -51,19 +46,19 @@ const Dashboard: React.FC = () => {
             </div>
             
             <div className="flex items-center gap-3">
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full glass-card">
-                <span className="w-2 h-2 rounded-full bg-risk-safe animate-pulse" />
-                <span className="text-sm text-foreground/90">AI Ready</span>
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
+                <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                <span className="text-sm text-white/90">AI Ready</span>
               </div>
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full glass-card">
-                <FileText className="w-4 h-4 text-muted-foreground" />
-                <span className="text-sm text-foreground/90">PDF & DOCX</span>
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
+                <FileText className="w-4 h-4 text-white/80" />
+                <span className="text-sm text-white/90">PDF & DOCX</span>
               </div>
             </div>
           </div>
 
           {/* Tagline */}
-          <p className="mt-6 text-muted-foreground max-w-2xl text-sm md:text-base leading-relaxed">
+          <p className="mt-6 text-white/70 max-w-2xl text-sm md:text-base leading-relaxed">
             Upload your contract and get instant AI-powered analysis of risky clauses, 
             legal citations under Indian law, and ready-to-use negotiation drafts.
           </p>
@@ -71,7 +66,7 @@ const Dashboard: React.FC = () => {
       </header>
 
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-8 md:py-12 relative z-10">
+      <main className="container mx-auto px-4 py-8 md:py-12">
         <div className="max-w-6xl mx-auto">
           {/* Upload Section */}
           <section className="mb-8">
@@ -88,8 +83,8 @@ const Dashboard: React.FC = () => {
               {/* Stats Bar */}
               <section className="mb-8 animate-fade-in">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  <div className="glass-card flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
+                  <div className="legal-card flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                       <TrendingUp className="w-5 h-5 text-primary" />
                     </div>
                     <div>
@@ -98,32 +93,32 @@ const Dashboard: React.FC = () => {
                     </div>
                   </div>
                   
-                  <div className="glass-card flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-risk-danger/20 flex items-center justify-center">
-                      <AlertTriangle className="w-5 h-5 text-risk-danger" />
+                  <div className="legal-card flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-red-100 flex items-center justify-center">
+                      <AlertTriangle className="w-5 h-5 text-red-600" />
                     </div>
                     <div>
-                      <p className="text-2xl font-display font-bold text-risk-danger">{stats.high}</p>
+                      <p className="text-2xl font-display font-bold text-red-600">{stats.high}</p>
                       <p className="text-xs text-muted-foreground">High Risk</p>
                     </div>
                   </div>
                   
-                  <div className="glass-card flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-risk-caution/20 flex items-center justify-center">
-                      <AlertTriangle className="w-5 h-5 text-risk-caution" />
+                  <div className="legal-card flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-yellow-100 flex items-center justify-center">
+                      <AlertTriangle className="w-5 h-5 text-yellow-600" />
                     </div>
                     <div>
-                      <p className="text-2xl font-display font-bold text-risk-caution">{stats.medium}</p>
+                      <p className="text-2xl font-display font-bold text-yellow-600">{stats.medium}</p>
                       <p className="text-xs text-muted-foreground">Medium Risk</p>
                     </div>
                   </div>
                   
-                  <div className="glass-card flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-risk-safe/20 flex items-center justify-center">
-                      <CheckCircle className="w-5 h-5 text-risk-safe" />
+                  <div className="legal-card flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center">
+                      <CheckCircle className="w-5 h-5 text-green-600" />
                     </div>
                     <div>
-                      <p className="text-2xl font-display font-bold text-risk-safe">{stats.low}</p>
+                      <p className="text-2xl font-display font-bold text-green-600">{stats.low}</p>
                       <p className="text-xs text-muted-foreground">Low Risk</p>
                     </div>
                   </div>
@@ -150,7 +145,7 @@ const Dashboard: React.FC = () => {
                       </p>
                     </div>
                     <div className="flex gap-2">
-                      <span className="px-3 py-1.5 rounded-full text-xs glass-card text-muted-foreground">
+                      <span className="px-2 py-1 rounded-full text-xs bg-muted text-muted-foreground">
                         Sorted by Risk
                       </span>
                     </div>
@@ -182,8 +177,8 @@ const Dashboard: React.FC = () => {
           {/* Empty State */}
           {!analysisComplete && !isLoading && (
             <section className="text-center py-16 animate-fade-in">
-              <div className="w-20 h-20 mx-auto mb-6 rounded-2xl glass-card flex items-center justify-center glow-purple">
-                <FileText className="w-10 h-10 text-primary" />
+              <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-muted flex items-center justify-center">
+                <FileText className="w-10 h-10 text-muted-foreground" />
               </div>
               <h3 className="font-display text-xl font-semibold text-foreground mb-2">
                 Ready to Analyze
@@ -198,8 +193,8 @@ const Dashboard: React.FC = () => {
           {/* Loading State */}
           {isLoading && (
             <section className="text-center py-16 animate-fade-in">
-              <div className="w-20 h-20 mx-auto mb-6 rounded-2xl glass-card flex items-center justify-center animate-pulse-glow glow-purple">
-                <Scale className="w-10 h-10 text-primary animate-float" />
+              <div className="w-20 h-20 mx-auto mb-6 rounded-2xl gradient-accent flex items-center justify-center animate-pulse-glow">
+                <Scale className="w-10 h-10 text-accent-foreground animate-float" />
               </div>
               <h3 className="font-display text-xl font-semibold text-foreground mb-2">
                 Analyzing Contract...
@@ -212,7 +207,7 @@ const Dashboard: React.FC = () => {
                 {[0, 1, 2].map((i) => (
                   <div
                     key={i}
-                    className="w-2 h-2 rounded-full bg-primary animate-pulse"
+                    className="w-2 h-2 rounded-full bg-accent animate-pulse"
                     style={{ animationDelay: `${i * 0.2}s` }}
                   />
                 ))}
@@ -223,11 +218,11 @@ const Dashboard: React.FC = () => {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-border relative z-10 mt-16">
+      <footer className="border-t border-border bg-muted/30 mt-16">
         <div className="container mx-auto px-4 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <Shield className="w-5 h-5 text-primary" />
+              <Shield className="w-5 h-5 text-muted-foreground" />
               <span className="text-sm text-muted-foreground">
                 AI Legal Sentinel for India
               </span>
