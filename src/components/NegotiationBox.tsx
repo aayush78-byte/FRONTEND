@@ -78,10 +78,10 @@ const NegotiationBox: React.FC<NegotiationBoxProps> = ({ issues }) => {
 
   if (highRiskIssues.length === 0 && mediumRiskIssues.length === 0) {
     return (
-      <div className="legal-card animate-slide-up stagger-4">
+      <div className="glass-card animate-slide-up stagger-4">
         <div className="flex items-center gap-3 mb-4">
-          <div className="w-10 h-10 rounded-lg bg-green-100 border border-green-200 flex items-center justify-center">
-            <Check className="w-5 h-5 text-green-600" />
+          <div className="w-10 h-10 rounded-lg bg-risk-safe/20 border border-risk-safe/30 flex items-center justify-center">
+            <Check className="w-5 h-5 text-risk-safe" />
           </div>
           <div>
             <h2 className="font-display text-lg font-semibold text-foreground">
@@ -101,10 +101,10 @@ const NegotiationBox: React.FC<NegotiationBoxProps> = ({ issues }) => {
   }
 
   return (
-    <div className="legal-card animate-slide-up stagger-4">
+    <div className="glass-card animate-slide-up stagger-4">
       <div className="flex items-start justify-between gap-4 mb-6">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg gradient-accent flex items-center justify-center">
+          <div className="w-10 h-10 rounded-lg gradient-accent flex items-center justify-center glow-purple">
             <MessageSquare className="w-5 h-5 text-accent-foreground" />
           </div>
           <div>
@@ -117,8 +117,8 @@ const NegotiationBox: React.FC<NegotiationBoxProps> = ({ issues }) => {
           </div>
         </div>
         <div className="flex items-center gap-1">
-          <Sparkles className="w-4 h-4 text-accent animate-pulse" />
-          <span className="text-xs text-accent font-medium">AI Generated</span>
+          <Sparkles className="w-4 h-4 text-primary animate-pulse" />
+          <span className="text-xs text-primary font-medium">AI Generated</span>
         </div>
       </div>
 
@@ -130,7 +130,7 @@ const NegotiationBox: React.FC<NegotiationBoxProps> = ({ issues }) => {
             onClick={() => setSelectedTone(tone)}
             className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
               selectedTone === tone
-                ? 'bg-primary text-primary-foreground'
+                ? 'bg-primary text-primary-foreground glow-purple'
                 : 'bg-muted text-muted-foreground hover:bg-muted/80'
             }`}
           >
@@ -148,7 +148,7 @@ const NegotiationBox: React.FC<NegotiationBoxProps> = ({ issues }) => {
 
       {/* Message Preview */}
       <div className="relative">
-        <div className="p-4 rounded-lg bg-muted/50 border border-border max-h-[300px] overflow-y-auto">
+        <div className="p-4 rounded-lg bg-muted/30 border border-border/50 max-h-[300px] overflow-y-auto">
           <pre className="text-sm text-foreground whitespace-pre-wrap font-sans leading-relaxed">
             {negotiationMessage}
           </pre>
@@ -159,8 +159,8 @@ const NegotiationBox: React.FC<NegotiationBoxProps> = ({ issues }) => {
           onClick={handleCopy}
           className={`absolute top-3 right-3 flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-300 ${
             copied
-              ? 'bg-green-100 text-green-700 border border-green-200'
-              : 'bg-card text-foreground border border-border hover:border-accent hover:shadow-sm'
+              ? 'bg-risk-safe/20 text-risk-safe border border-risk-safe/30'
+              : 'glass-card hover:border-primary/50 hover:glow-purple'
           }`}
         >
           {copied ? (
