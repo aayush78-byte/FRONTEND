@@ -28,10 +28,10 @@ const RiskMeter: React.FC<RiskMeterProps> = ({ score }) => {
   }, [score]);
 
   const getRiskLevel = (value: number) => {
-    if (value <= 30) return { label: 'Mostly Safe', color: 'text-risk-safe', bgColor: 'bg-green-100', borderColor: 'border-green-200' };
-    if (value <= 60) return { label: 'Caution Advised', color: 'text-risk-caution', bgColor: 'bg-yellow-100', borderColor: 'border-yellow-200' };
-    if (value <= 80) return { label: 'High Risk', color: 'text-risk-warning', bgColor: 'bg-orange-100', borderColor: 'border-orange-200' };
-    return { label: 'Predatory Terms', color: 'text-risk-danger', bgColor: 'bg-red-100', borderColor: 'border-red-200' };
+    if (value <= 30) return { label: 'Mostly Safe', color: 'text-risk-safe', bgColor: 'bg-risk-safe/20', borderColor: 'border-risk-safe/30' };
+    if (value <= 60) return { label: 'Caution Advised', color: 'text-risk-caution', bgColor: 'bg-risk-caution/20', borderColor: 'border-risk-caution/30' };
+    if (value <= 80) return { label: 'High Risk', color: 'text-risk-warning', bgColor: 'bg-risk-warning/20', borderColor: 'border-risk-warning/30' };
+    return { label: 'Predatory Terms', color: 'text-risk-danger', bgColor: 'bg-risk-danger/20', borderColor: 'border-risk-danger/30' };
   };
 
   const getRiskIcon = (value: number) => {
@@ -59,7 +59,7 @@ const RiskMeter: React.FC<RiskMeterProps> = ({ score }) => {
   };
 
   return (
-    <div className="legal-card animate-slide-up stagger-1">
+    <div className="glass-card animate-slide-up stagger-1">
       <div className="flex items-center gap-3 mb-6">
         <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${riskInfo.bgColor} ${riskInfo.borderColor} border`}>
           <span className={riskInfo.color}>{getRiskIcon(score)}</span>
@@ -82,11 +82,18 @@ const RiskMeter: React.FC<RiskMeterProps> = ({ score }) => {
             <defs>
               <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0%" stopColor="hsl(142, 71%, 45%)" />
-                <stop offset="33%" stopColor="hsl(45, 93%, 47%)" />
-                <stop offset="66%" stopColor="hsl(25, 95%, 53%)" />
+                <stop offset="33%" stopColor="hsl(45, 93%, 55%)" />
+                <stop offset="66%" stopColor="hsl(25, 95%, 55%)" />
                 <stop offset="100%" stopColor="hsl(0, 84%, 60%)" />
               </linearGradient>
               <filter id="glow">
+                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                <feMerge>
+                  <feMergeNode in="coloredBlur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+              <filter id="needleGlow">
                 <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
                 <feMerge>
                   <feMergeNode in="coloredBlur"/>
@@ -99,19 +106,19 @@ const RiskMeter: React.FC<RiskMeterProps> = ({ score }) => {
             <path
               d={generateArcPath(-180, 0, 75)}
               fill="none"
-              stroke="hsl(220, 14%, 96%)"
+              stroke="hsl(270, 30%, 20%)"
               strokeWidth="12"
               strokeLinecap="round"
             />
 
-            {/* Colored arc */}
+            {/* Colored arc with glow */}
             <path
               d={generateArcPath(-180, 0, 75)}
               fill="none"
               stroke="url(#gaugeGradient)"
               strokeWidth="12"
               strokeLinecap="round"
-              className="opacity-90"
+              filter="url(#glow)"
             />
 
             {/* Tick marks */}
@@ -129,9 +136,8 @@ const RiskMeter: React.FC<RiskMeterProps> = ({ score }) => {
                     y1={y1}
                     x2={x2}
                     y2={y2}
-                    stroke="hsl(222, 47%, 18%)"
+                    stroke="hsl(270, 30%, 40%)"
                     strokeWidth="2"
-                    opacity="0.3"
                   />
                   <text
                     x={100 + 52 * Math.cos(rad)}
@@ -139,7 +145,7 @@ const RiskMeter: React.FC<RiskMeterProps> = ({ score }) => {
                     textAnchor="middle"
                     dominantBaseline="middle"
                     fontSize="8"
-                    fill="hsl(220, 9%, 46%)"
+                    fill="hsl(270, 15%, 60%)"
                     fontWeight="500"
                   >
                     {tick}
@@ -158,20 +164,20 @@ const RiskMeter: React.FC<RiskMeterProps> = ({ score }) => {
             >
               <polygon
                 points="100,25 96,100 104,100"
-                fill="hsl(222, 47%, 18%)"
-                filter="url(#glow)"
+                fill="hsl(280, 70%, 60%)"
+                filter="url(#needleGlow)"
               />
               <circle
                 cx="100"
                 cy="100"
                 r="8"
-                fill="hsl(222, 47%, 18%)"
+                fill="hsl(280, 70%, 60%)"
               />
               <circle
                 cx="100"
                 cy="100"
                 r="4"
-                fill="hsl(0, 0%, 100%)"
+                fill="hsl(270, 50%, 20%)"
               />
             </g>
           </svg>
@@ -195,10 +201,10 @@ const RiskMeter: React.FC<RiskMeterProps> = ({ score }) => {
         {/* Risk breakdown */}
         <div className="w-full mt-6 grid grid-cols-4 gap-2">
           {[
-            { label: 'Safe', range: '0-30', color: 'bg-green-500' },
-            { label: 'Caution', range: '31-60', color: 'bg-yellow-500' },
-            { label: 'High', range: '61-80', color: 'bg-orange-500' },
-            { label: 'Critical', range: '81-100', color: 'bg-red-500' },
+            { label: 'Safe', range: '0-30', color: 'bg-risk-safe' },
+            { label: 'Caution', range: '31-60', color: 'bg-risk-caution' },
+            { label: 'High', range: '61-80', color: 'bg-risk-warning' },
+            { label: 'Critical', range: '81-100', color: 'bg-risk-danger' },
           ].map((item) => (
             <div key={item.label} className="text-center">
               <div className={`h-2 rounded-full ${item.color} mb-1 opacity-80`} />
